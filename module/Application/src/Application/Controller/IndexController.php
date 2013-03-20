@@ -9,6 +9,10 @@
 
 namespace Application\Controller;
 
+use Application\InputFilter\RegisterInputFilter;
+
+use Application\Form\RegisterForm;
+
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -16,6 +20,46 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        $view = new ViewModel();
+        
+        $form = new RegisterForm();
+        
+        $form->setInputFilter(new RegisterInputFilter());
+        
+        $request = $this->getRequest();
+        
+        if($request->isPost()) {
+            $formData = $request->getPost();
+            $form->setData($formData);
+        
+            if($form->isValid()) {
+                $dataInput = $form->getData();
+                
+                $dataInput['ip'] = $_SERVER['REMOTE_ADDR'];
+                
+                $this->getModelRegister()->register($dataInput);
+                
+//                 $this->flashMessenger()->addMessage(new FlashMessengerMessage("Changes has been saved successfully.", FlashMessengerMessage::TYPE_SUCCESS));
+                
+                return $this->redirect()->toRoute('home');
+            }
+        }
+        
+        $view->form = $form;
+        
+        return $view;
     }
+    
+    /**
+     * @return \Application\Model\RegisterModel
+     */
+    public function getModelRegister()
+    {
+        if (!$this->modelRegister)
+            $this->modelRegister = $this->getServiceLocator()->get('Application\Model\Register');
+    
+        return $this->modelRegister;
+    }
+    
+    private $modelRegister;
 }
