@@ -4,7 +4,6 @@ return array(
     'ApiGetResponse' => array
     (
         'api_url' => 'http://api2.getresponse.com',
-        'campaign_name' => 'proseed',
     ),
     
     'router' => require 'router.config.php',

@@ -40,10 +40,10 @@ class RegisterModel extends BaseGetResponseModel
                         "name"       => "person_position",
                         "content"    => $data['person_position']
                     ),
-                    array(
-                        "name"       => "person_email",
-                        "content"    => $data['person_email']
-                    ),
+//                     array(
+//                         "name"       => "person_email",
+//                         "content"    => $data['person_email']
+//                     ),
                     array(
                         "name"       => "person_phone",
                         "content"    => $data['person_phone']
@@ -53,12 +53,14 @@ class RegisterModel extends BaseGetResponseModel
             
             $request = $this->getRequest();
             
-//             $request->setDebug(true);
+            $request->setDebug(true);
             
             $result = $request->add_contact(
                 $this->getApiKey(),
                 $requestData
             );
+            
+            return true;
         }
         catch(\Exception $e) {
             throw new \Exception("API error: " . $e->getMessage());

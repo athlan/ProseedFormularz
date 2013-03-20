@@ -15,5 +15,6 @@ return array(
     'ApiGetResponse' => array
     (
         'api_key' => '',
+        'campaign_name' => '',
     ),
 );

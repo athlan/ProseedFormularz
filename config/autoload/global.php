@@ -15,5 +15,6 @@ return array(
     'ApiGetResponse' => array
     (
         'api_key' => 'bad0fc1f765a95737e96bbfdba644d2a',
+        'campaign_name' => 'proseed_i_oktawave',
     ),
 );
