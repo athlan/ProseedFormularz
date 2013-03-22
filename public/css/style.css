@@ -1,6 +1,108 @@
+@font-face {
+    font-family: 'MuseoSans500';
+    src: url('http://proseedmag.pl/wp-content/fonts/MuseoSans_500-webfont.eot');
+    src: url('http://proseedmag.pl/wp-content/fonts/MuseoSans_500-webfont.eot?iefix') format('eot'),
+         url('http://proseedmag.pl/wp-content/fonts/MuseoSans_500-webfont.woff') format('woff'),
+         url('http://proseedmag.pl/wp-content/fonts/MuseoSans_500-webfont.ttf') format('truetype'),
+         url('http://proseedmag.pl/wp-content/fonts/MuseoSans_500-webfont.svg#webfontkQkWxTED') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
+	color: #414042;
+	
+	font: 14px/19px MuseoSans500,georgia,'palatino linotype',palatino,'times new roman',times,serif;
 }
 
 .container {
 	width: 100% !important;
+}
+
+form label span {
+	display: block;
+	margin-bottom: 3px;
+	font-size: 17px;
+}
+
+form label input {
+	margin-bottom: 0 !important;
+}
+
+form ul {
+	color: red;
+	margin: 0 0 15px 0;
+	list-style-type: none;	
+}
+
+.clear {
+	clear: both;
+}
+
+.formWrapper {
+	background-color: #f5f5f5;
+	width: 410px;
+	padding: 25px;
+	margin: 0 auto;
+	border: 3px solid #dddddd;
+	
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+.fieldRow {
+	clear: both;
+}
+
+.fieldRow .field input {
+	width: 175px;
+}
+
+input[type="submit"] {
+	background: #00afed url(../img/submit-bg.png) 120px center no-repeat;
+	border: 0;
+	height: 40px;
+	width: 155px;
+	margin: 0 auto;
+	
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-shadow: -2px 2px 1px #007ca7;
+	display: block;
+	padding-right: 35px;
+	
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.fieldRow .field .input-error {
+	border-color: #e9322d;
+}
+
+.fieldRow .field {
+	width: 190px;
+	margin-left: 25px;
+	float: left;
+	padding-bottom: 15px;
+}
+
+.fieldRow .field:FIRST-CHILD {
+	margin-left: 0;
+}
+
+.fieldRow ul {
+}
+
+.successMessage {
+	color: #7d9f3a;
+	font-size: 22px;
+	margin: 50px 0;
+	text-align: center;
+	line-height: 120%;
 }

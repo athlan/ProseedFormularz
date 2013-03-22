@@ -49,7 +49,13 @@ class RegisterInputFilter extends BaseInputFilter
         $this->add($factory->createInput([
             'name'     => 'person_phone',
             'required' => true,
+            'filters' => [
+                new \Application\Filter\PhoneFilter(),
+            ],
             'validators'  => [
+                ['name' => 'NotEmpty', 'options' => ['messages' => ['isEmpty' => 'Niepoprawny numer telefonu']], 'break_chain_on_failure' => true],
+                ['name' => 'Digits', 'options' => ['messages' => ['notDigits' => 'Niepoprawny numer telefonu']], 'break_chain_on_failure' => true],
+                ['name' => 'StringLength', 'options' => ['min' => 6], 'break_chain_on_failure' => true],
             ],
         ]));
 

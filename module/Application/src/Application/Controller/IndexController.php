@@ -22,6 +22,8 @@ class IndexController extends AbstractActionController
     {
         $view = new ViewModel();
         
+//         $view->setTemplate('application/index/indexSuccess');
+        
         $form = new RegisterForm();
         
         $form->setInputFilter(new RegisterInputFilter());
@@ -41,7 +43,12 @@ class IndexController extends AbstractActionController
                 
 //                 $this->flashMessenger()->addMessage(new FlashMessengerMessage("Changes has been saved successfully.", FlashMessengerMessage::TYPE_SUCCESS));
                 
-                return $this->redirect()->toRoute('home');
+                $view->setTemplate('application/index/indexSuccess');
+                
+                //return $this->redirect()->toRoute('home');
+            }
+            else {
+                $form->setData($form->getData());
             }
         }
         

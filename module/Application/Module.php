@@ -20,6 +20,8 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+        
+        $this->configureTranslator($e);
     }
 
     public function getConfig()
@@ -36,5 +38,17 @@ class Module
                 ),
             ),
         );
+    }
+    
+    public function configureTranslator(MvcEvent $e) {
+        $translator = $e->getApplication()->getServiceManager()->get('translator');
+        
+        $lang = 'pl_PL';
+        
+        \Locale::setDefault($lang);
+        
+        $translator->setLocale($lang);
+        
+        \Zend\Validator\AbstractValidator::setDefaultTranslator($translator);
     }
 }

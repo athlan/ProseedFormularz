@@ -12,7 +12,7 @@ class RegisterModel extends BaseGetResponseModel
         
         $campaignId = $this->getCampaignIdByName($campaignName);
         
-        if($this->checkEmailExists($data['person_email']. 's', $campaignId))
+        if($this->checkEmailExists($data['person_email'], $campaignId))
             return false;
         
         try {
@@ -53,7 +53,7 @@ class RegisterModel extends BaseGetResponseModel
             
             $request = $this->getRequest();
             
-            $request->setDebug(true);
+//             $request->setDebug(true);
             
             $result = $request->add_contact(
                 $this->getApiKey(),

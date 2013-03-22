@@ -5,7 +5,49 @@ $form->setAttribute('action', '');
 $form->prepare();
 
 echo $this->form()->openTag($form);
-echo $this->formCollection($form);
+
+?>
+
+<div class="formWrapper">
+    <div class="fieldRow">
+        <div class="field">
+            <?php echo $this->formRow($form->get('person_firstname')); ?>
+        </div>
+        <div class="field">
+            <?php echo $this->formRow($form->get('person_lastname')); ?>
+        </div>
+    </div>
+    <div class="fieldRow">
+        <div class="field">
+            <?php echo $this->formRow($form->get('person_email')); ?>
+        </div>
+        <div class="field">
+            <?php echo $this->formRow($form->get('person_phone')); ?>
+        </div>
+    </div>
+    <div class="fieldRow">
+        <div class="field">
+            <?php echo $this->formRow($form->get('compay_name')); ?>
+        </div>
+        <div class="field">
+            <?php echo $this->formRow($form->get('person_position')); ?>
+        </div>
+    </div>
+    <div class="clear"></div>
+    
+    <?php echo $this->formRow($form->get('csrf')); ?>
+    
+    <?php echo $this->formRow($form->get('submit')); ?>
+</div>
+<script>
+$(function() {
+	$('.input-error').bind('change keyup blur', function() {
+		$(this).removeClass('input-error');
+	});
+});
+</script>
+<?php 
+
 echo $this->form()->closeTag();
 
 ?>
